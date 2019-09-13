@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="number">
+        <item> 해당없음</item>
+        <item >지체</item>
+        <item >시각</item>
+        <item >청각</item>
+        <item >언어</item>
+        <item >지적</item>
+        <item >뇌병변</item>
+        <item >자폐성</item>
+        <item >정신</item>
+        <item >신장</item>
+        <item >심장</item>
+        <item >호흡기</item>
+        <item >간</item>
+        <item >안면</item>
+        <item >장루</item>
+        <item >간질</item>
+
+    </string-array>
+</resources>

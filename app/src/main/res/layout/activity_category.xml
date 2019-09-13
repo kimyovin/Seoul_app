@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:padding="3dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/category00"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/safety" />
+
+            <ImageButton
+                android:id="@+id/category01"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/healty" />
+
+            <ImageButton
+                android:id="@+id/category02"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/family" />
+
+            <ImageButton
+                android:id="@+id/category03"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/category00"
+                android:background="@drawable/economy" />
+
+            <ImageButton
+                android:id="@+id/category04"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/category02"
+                android:background="@drawable/education" />
+
+            <ImageButton
+                android:id="@+id/category05"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/category02"
+                android:background="@drawable/employ" />
+
+            <ImageButton
+                android:id="@+id/category06"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/category03"
+                android:background="@drawable/law" />
+
+            <ImageButton
+                android:id="@+id/category07"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/category04"
+                android:background="@drawable/oneparent" />
+
+            <ImageButton
+                android:id="@+id/category08"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/category05"
+                android:background="@drawable/pregnant" />
+
+            <ImageButton
+                android:id="@+id/category09"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/category06"
+                android:background="@drawable/disability" />
+
+
+            <ImageButton
+                android:id="@+id/category0A"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/category07"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/multiculture" />
+
+            <ImageButton
+                android:id="@+id/category0B"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/category07"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/oldman" />
+
+    </RelativeLayout>
+
+
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/navigation"-->
+<!--        android:layout_width="368dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginBottom="8dp"-->
+
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:background="?android:attr/windowBackground"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:menu="@menu/navigation" />-->
+
+
+</FrameLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+       <string-array name="array1">
+        <item >해당없음</item>
+        <item >여성</item>
+        <item >임산부</item>
+        <item >장애</item>
+        <item >국가유공자등 보훈대상자</item>
+        <item >실업자</item>
+    </string-array>
+
+</resources>
