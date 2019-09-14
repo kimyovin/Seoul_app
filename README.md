@@ -1,5 +1,5 @@
 # Seoul_app
 
-* HBK
+* HVK
 * JYP
 * JYY
