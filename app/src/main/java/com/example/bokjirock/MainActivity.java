@@ -26,11 +26,14 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     //private TextView mTextMessage;
 
     private ViewPager tabViewPager; //tab이 들어갈 view pager
-    ActionBar actionBar;    //swipe할 수 있게 해주는 액션바
-    private FragmentManager fm;
-    private ArrayList<Fragment> fList;  //각 탭에 들어갈 fragment list
-    CustomFragmentPagerAdapter pagerAdapter;
-
+    //Fragment 매니저 선언
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    //Page에 대한 Activity 선언
+    private HomeActivity fragmentHome = new HomeActivity();
+    private searchActivity fragmentSearch = new searchActivity();
+    private categoryActivity fragmentCategory = new categoryActivity();
+    private locationActivity fragmentLocation = new locationActivity();
+    private CustomFragmentPagerAdapter pagerAdapter;
 
     @Override   //하단바 메뉴에 대한 intent 설정
     public boolean onMenuItemClick(MenuItem menuItem) {
@@ -60,21 +63,25 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            onMenuItemClick(item);
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
+//            onMenuItemClick(item);
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    transaction.replace(R.id.frameLayout, fragmentHome).commitAllowingStateLoss();
 //                    setContentView(R.layout.activity_main);
-//                    return true;
-//                case R.id.navigation_dashboard:
+                    return true;
+                case R.id.navigation_dashboard:
+                    transaction.replace(R.id.frameLayout, fragmentSearch).commitAllowingStateLoss();
 //                    container.setBackgroundColor(Color.YELLOW);
-//                    return true;
-//                case R.id.navigation_notifications:
+                    return true;
+                case R.id.navigation_notifications:
+                    transaction.replace(R.id.frameLayout, fragmentCategory).commitAllowingStateLoss();
 //                    container.setBackgroundColor(Color.BLUE);
-//                    return true;
-//                case R.id.navigation_search:
+                    return true;
+                case R.id.navigation_search:
 //                    mTextMessage.setText("Login");
-//                    return true;
-//            }
+                    return true;
+            }
             return false;
         }
     };
@@ -91,12 +98,14 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         tabViewPager.setAdapter(pagerAdapter);
         TabLayout mTab = (TabLayout) findViewById(R.id.tabMode);
         mTab.setupWithViewPager(tabViewPager);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frameLayout, fragmentHome).commitAllowingStateLoss();
 
         //하단바 액션 불구설정
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);  //하단바 리스너 설정
-//        BottomNavigationViewHelper.disableShiftMode(navigation);    //하단바 viewHelper 설정
-
+        BottomNavigationViewHelper.disableShiftMode(navigation);    //하단바 viewHelper 설정
+      
         tabViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -124,4 +133,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         return;
     }
 
-}
+        
+    }
+    //onCreate 끝
+

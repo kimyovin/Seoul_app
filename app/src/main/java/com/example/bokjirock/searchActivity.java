@@ -1,20 +1,19 @@
 package com.example.bokjirock;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-public class searchActivity extends Activity implements MenuItem.OnMenuItemClickListener{
+public class searchActivity extends Fragment {
     private Button btnFinish;
     private Spinner spinner1, spinner2, spinner3, spinner4, spinnerAge;
     private String key = "rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D";
@@ -22,24 +21,20 @@ public class searchActivity extends Activity implements MenuItem.OnMenuItemClick
 
     CheckBox typeALL, type00, type01, type02, type03, type04, type05,type06,type07, type08, type09, type0A;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final String sAge, sTarget, sTypeObs, sLevelObs, sTypeHome;
 
-        btnFinish = findViewById(R.id.btnFinish);  // 검색버튼
-        spinnerAge = findViewById(R.id.spinnerAge);  // 나이
+        View view = inflater.inflate(R.layout.activity_search, container, false);
 
-        spinner1 = findViewById(R.id.spinner1);      // 대상특성 여성, 임산부, 장애, ..
-        spinner2 = findViewById(R.id.spinner2);      // 장애 클릭시 지체...시각, 청각..등등
-        spinner3 = findViewById(R.id.spinner3);      // 장애 클릭시 몇급인지
-        spinner4 = findViewById(R.id.spinner4);      // 가구 유형 한부모, 다문화, 조손 등등
+        btnFinish = view.findViewById(R.id.btnFinish);  // 검색버튼
+        spinnerAge = view.findViewById(R.id.spinnerAge);  // 나이
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);  //하단바 리스너 설정
-        BottomNavigationViewHelper.disableShiftMode(navigation);    //하단바 viewHelper 설정
+        spinner1 = view.findViewById(R.id.spinner1);      // 대상특성 여성, 임산부, 장애, ..
+        spinner2 = view.findViewById(R.id.spinner2);      // 장애 클릭시 지체...시각, 청각..등등
+        spinner3 = view.findViewById(R.id.spinner3);      // 장애 클릭시 몇급인지
+        spinner4 = view.findViewById(R.id.spinner4);      // 가구 유형 한부모, 다문화, 조손 등등
 
         switch (spinnerAge.getSelectedItem().toString()) {
             case "영유아":
@@ -196,18 +191,18 @@ public class searchActivity extends Activity implements MenuItem.OnMenuItemClick
 
         }
 
-        typeALL = findViewById(R.id.typeALL);
-        type00 = findViewById(R.id.type00);
-        type01 = findViewById(R.id.type01);
-        type02 = findViewById(R.id.type02);
-        type03 = findViewById(R.id.type03);
-        type04 = findViewById(R.id.type04);
-        type05 = findViewById(R.id.type05);
-        type06 = findViewById(R.id.type06);
-        type07 = findViewById(R.id.type07);
-        type08 = findViewById(R.id.type08);
-        type09 = findViewById(R.id.type09);
-        type0A = findViewById(R.id.type0A);
+        typeALL = view.findViewById(R.id.typeALL);
+        type00 = view.findViewById(R.id.type00);
+        type01 = view.findViewById(R.id.type01);
+        type02 = view.findViewById(R.id.type02);
+        type03 = view.findViewById(R.id.type03);
+        type04 = view.findViewById(R.id.type04);
+        type05 = view.findViewById(R.id.type05);
+        type06 = view.findViewById(R.id.type06);
+        type07 = view.findViewById(R.id.type07);
+        type08 = view.findViewById(R.id.type08);
+        type09 = view.findViewById(R.id.type09);
+        type0A = view.findViewById(R.id.type0A);
 
 
         btnFinish.setOnClickListener(new View.OnClickListener() {
@@ -277,62 +272,17 @@ public class searchActivity extends Activity implements MenuItem.OnMenuItemClick
 
                 String query = str + option1 + option2 + option3 + option4 + option5+ typeUrl;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
 
-                finish();
+                getActivity().finish();
 
 
             }
         });
+
+        return view;
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-        if(menuItem.getItemId() == R.id.navigation_dashboard){  //2번째 하단바 메뉴
-            Intent intent = new Intent(this, searchActivity.class);
-            startActivity(intent);
-        }
-        if(menuItem.getItemId() == R.id.navigation_notifications){  //3번째 하단바 메뉴
-            Intent intent = new Intent(this, categoryActivity.class);
-            startActivity(intent);
-        }
-//        if (menuItem.getItemId() == R.id.navigation_search) {   //4번째 하단바 메뉴
-//            Intent intent = new Intent(this, signin.class);
-//            startActivity(intent);
-//            //    finish();
-//            return true;
-//        }
-        return false;
-    }
-
-    //하단바 리스너
-    public BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            onMenuItemClick(item);
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    //mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    // mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_search:
-                    // mTextMessage.setText("Login");
-                    return true;
-            }
-            return false;
-        }
-    };
 }

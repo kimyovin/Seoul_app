@@ -5,58 +5,48 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 
 //import com.example.bokjirock.databinding.ActivityCategoryBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class categoryActivity extends Activity implements MenuItem.OnMenuItemClickListener{
+public class categoryActivity extends Fragment {
     ImageButton category00, category01, category02, category03, category04, category05, category06, category07, category08, category09,  category0A,  category0B;
-    BottomNavigationView navigation;
+
 
     String key = "rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D";
     String key_final = "http://www.bokjiro.go.kr/openapi/rest/gvmtWelSvc?crtiKey=" + key + "&callTp=L&pageNum=1&numOfRows=100";
     String str = null;
-
+    View view = null;
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
-        //ActivityCategoryBinding layout = DataBindingUtil.setContentView(this, R.layout.activity_category);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.activity_category, container, false);
+
+        category00 = view.findViewById(R.id.category00);
+        category01 = view.findViewById(R.id.category01);
+        category02 = view.findViewById(R.id.category02);
+        category03 = view.findViewById(R.id.category03);
+        category04 = view.findViewById(R.id.category04);
+        category05 = view.findViewById(R.id.category05);
+        category06 = view.findViewById(R.id.category06);
+        category07 = view.findViewById(R.id.category07);
+        category08 = view.findViewById(R.id.category08);
+        category09 = view.findViewById(R.id.category09);
+        category0A = view.findViewById(R.id.category0A);
+        category0B = view.findViewById(R.id.category0B);
 
 
-        category00 = findViewById(R.id.category00);
-        category01 = findViewById(R.id.category01);
-        category02 = findViewById(R.id.category02);
-        category03 = findViewById(R.id.category03);
-        category04 = findViewById(R.id.category04);
-        category05 = findViewById(R.id.category05);
-        category06 = findViewById(R.id.category06);
-        category07 = findViewById(R.id.category07);
-        category08 = findViewById(R.id.category08);
-        category09 = findViewById(R.id.category09);
-        category0A = findViewById(R.id.category0A);
-        category0B = findViewById(R.id.category0B);
-        navigation = findViewById(R.id.navigation);
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);  //하단바 리스너 설정
-  //      BottomNavigationViewHelper.disableShiftMode(navigation);    //하단바 viewHelper 설정
-
-        // 상대적 시도해보자. 재윤 0911
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-        Log.v("알림", "height: " + height + "  width: " + width);
-        
         //안전
         category00.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +55,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -79,7 +69,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -93,7 +83,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -107,7 +97,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -121,7 +111,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -135,7 +125,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -149,7 +139,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -163,7 +153,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -178,7 +168,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -192,7 +182,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(),resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(),resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -206,7 +196,7 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
@@ -220,62 +210,20 @@ public class categoryActivity extends Activity implements MenuItem.OnMenuItemCli
 
                 String query = key_final + str;
 
-                Intent intent = new Intent(getApplicationContext(), resultActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
                 startActivity(intent);
             }
         });
-
+        return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_category);
 
-    //하단바 메뉴에 대한 intent 설정
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-        if(menuItem.getItemId() == R.id.navigation_dashboard){  //2번째 하단바 메뉴
-            Intent intent = new Intent(this, searchActivity.class);
-            startActivity(intent);
-        }
-        if(menuItem.getItemId() == R.id.navigation_notifications){  //3번째 하단바 메뉴
-            Intent intent = new Intent(this, categoryActivity.class);
-            startActivity(intent);
-        }
-//        if (menuItem.getItemId() == R.id.navigation_search) {   //4번째 하단바 메뉴
-//            Intent intent = new Intent(this, signin.class);
-//            startActivity(intent);
-//            //    finish();
-//            return true;
-//        }
-        return false;
+
     }
-
-    //하단바 리스너
-    public BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            onMenuItemClick(item);
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    //mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    // mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_search:
-                    // mTextMessage.setText("Login");
-                    return true;
-            }
-            return false;
-        }
-    };
-
 
 }
