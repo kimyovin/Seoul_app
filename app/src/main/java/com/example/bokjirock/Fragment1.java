@@ -30,6 +30,8 @@ import java.net.URL;
 import java.security.acl.LastOwnerException;
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class Fragment1 extends Fragment {
@@ -60,7 +62,9 @@ public class Fragment1 extends Fragment {
     });
 
     public static Fragment1 newInstance() {
+        Bundle args=new Bundle();
         Fragment1 fragment = new Fragment1();
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -101,7 +105,7 @@ public class Fragment1 extends Fragment {
     }
 
     private void getsubwayApi() {
-       // Log.e("아아","11");
+        Log.e("아아","11");
         policyInputArrayList.clear();
         apiThread = initgetAPiThread();
         apiThread.start();
@@ -118,10 +122,10 @@ public class Fragment1 extends Fragment {
 
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                     XmlPullParser xpars = factory.newPullParser();
-                    //Log.e("아아","22");
+                    Log.e("아아","22");
                     try {
                         xpars.setInput(new InputStreamReader(ins, "UTF-8"));    //?명뭼由щ뜑濡??뚯떛???댁슜 ?ｊ린
-                        //Log.e("아아","33");
+                        Log.e("아아","33");
                     } catch (XmlPullParserException e) {
                         e.printStackTrace();
                     }
@@ -160,7 +164,7 @@ public class Fragment1 extends Fragment {
                                     policyInput.setServId(text);
                                 } else if (tag.equals("servNm")) {
                                     policyInput.setServNm(text);
-                                    //Log.e("ㅎㅎ", text);
+                                    Log.e("ㅎㅎ", text);
                                 } else if (tag.equals("svcfrstRegTs")) {
                                     policyInput.setSvcfrstRegTs(text);
                                 }
@@ -183,9 +187,15 @@ public class Fragment1 extends Fragment {
     }
 
     private void makePolicyInfo(ArrayList<policyInput> policyInputArrayList){
+        Collections.sort(policyInputArrayList, new Comparator<policyInput>() {
+            @Override
+            public int compare(com.example.bokjirock.policyInput p1, com.example.bokjirock.policyInput p2) {
+                return p1.getSvcfrstRegTs().compareTo(p2.getSvcfrstRegTs());
+            }
+        });
         for(int i=0;i<policyInputArrayList.size();i++) {
             String ServDgst = policyInputArrayList.get(i).getServDgst().replaceAll("[<>br/]", "");
-            //Log.e("여기11",ServDgst);
+            Log.e("여기11",ServDgst);
             policyInfoArrayList.add(new policyInfo(policyInputArrayList.get(i).getServNm(), ServDgst, "0", "0", policyInputArrayList.get(i).getServId()));
         }
     }
