@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/policy_content"
+    android:padding="8dp"
+    android:layout_margin="5dp"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:layout_margin="3dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_policyname"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="7.7"
+                android:textSize="16dp" />
+
+            <ImageButton
+                android:layout_width="0dip"
+                android:layout_weight="0.8"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/scrap_button"
+                android:id="@+id/ib_deletebtn"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="5.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_policycontent"
+                android:textSize="13dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

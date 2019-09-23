@@ -218,5 +218,3 @@
             android:background="@drawable/oldman" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

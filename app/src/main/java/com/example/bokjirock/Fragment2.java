@@ -30,10 +30,12 @@ import java.net.URL;
 import java.security.acl.LastOwnerException;
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class Fragment2 extends Fragment {
-    private String queryUrl = "http://www.bokjiro.go.kr/openapi/rest/gvmtWelSvc?crtiKey=rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D&callTp=L&pageNum=1&numOfRows=500";
+    private likeDBHelper helper;
     private Thread apiThread;
     AssetManager assetManager;
     private policyInput policyInput;
@@ -41,25 +43,31 @@ public class Fragment2 extends Fragment {
     private RecyclerView recyclerView1;
     private ArrayList<policyInput> policyInputArrayList;
     private ArrayList<policyInfo> policyInfoArrayList;
+    private likeAdapter madapter;
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message message) {
             switch (message.what) {
                 case 101:
                     makePolicyInfo(policyInputArrayList);
-                    recyclerView1.setAdapter(new myAdapter(getContext(),policyInfoArrayList));
+                    recyclerView1.setAdapter(madapter);
                     break;
                 case 102:
                     //오류
                     Toast.makeText(getContext(), (String) message.obj, Toast.LENGTH_SHORT).show();
+                    break;
+                case 103:
+                    recyclerView1.setAdapter(new myAdapter(getContext(),policyInfoArrayList));
                     break;
             }
             return true;
         }
     });
 
-    public static Fragment1 newInstance() {
-        Fragment1 fragment = new Fragment1();
+    public static Fragment2 newInstance() {
+        Bundle args=new Bundle();
+        Fragment2 fragment = new Fragment2();
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -68,12 +76,15 @@ public class Fragment2 extends Fragment {
         super.onCreate(savedInstanceState);
         policyInfoArrayList=new ArrayList<policyInfo>();
         policyInputArrayList = new ArrayList<>();
+        madapter=new likeAdapter(getContext(),policyInfoArrayList);
+        helper=new likeDBHelper(getContext(), "Likes.db", null, 1);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment1, container, false);
+        Log.e("안녕1","프래2");
         LayoutManager1 = new LinearLayoutManager(view.getContext());
         recyclerView1 = view.findViewById(R.id.recycle_view1);
         recyclerView1.setHasFixedSize(true);
@@ -87,6 +98,7 @@ public class Fragment2 extends Fragment {
         super.onStart();
     }
 
+
     @Override
     public void onStop() {
         if (apiThread != null) {
@@ -95,7 +107,6 @@ public class Fragment2 extends Fragment {
             }
             apiThread = null;
         }
-
         super.onStop();
     }
 
@@ -106,77 +117,25 @@ public class Fragment2 extends Fragment {
         apiThread.start();
     }
 
+
     private Thread initgetAPiThread() {
         return new Thread(new Runnable() {
             @Override
             public void run() {
                 Message msg = mHandler.obtainMessage();
-                InputStream ins = null;
-                try {
-                    ins = new URL(queryUrl).openStream();      //二쇱냼 ?좎븣??諛쏆븘 ?ㅽ뵂?ㅽ듃由?
-
-                    XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                    XmlPullParser xpars = factory.newPullParser();
-                    //Log.e("아아","22");
-                    try {
-                        xpars.setInput(new InputStreamReader(ins, "UTF-8"));    //?명뭼由щ뜑濡??뚯떛???댁슜 ?ｊ린
-                        //Log.e("아아","33");
-                    } catch (XmlPullParserException e) {
-                        e.printStackTrace();
+                String result=helper.getallResult();
+                if(!result.equals("")) {
+                    Log.e("확인1", result);
+                    String policy[] = result.split(";");
+                    for (int i = 0; i < policy.length; i++) {
+                        policyInputArrayList.add(new policyInput(policy[i].split("&")[0], policy[i].split("&")[1], policy[i].split("&")[2]));
                     }
-                    int eventType = xpars.getEventType();
-                    policyInfo policyInfo = null;
-                    String text = "";
-                    while (eventType != XmlPullParser.END_DOCUMENT) {   //가져온 내용이 끝이 아닐때까지 수행
-                        String tag = xpars.getName();
-                        switch (eventType) {
-                            case XmlPullParser.START_TAG://태그가 시작됨
-                                tag = xpars.getName();//태그 이름 얻어오기
-                                if (tag.equals("servList")) {// 서브리스트 태그가 한 서비스마다 시작 알려주는 거
-                                    policyInput = new policyInput();
-                                }
-                                break;
-
-                            case XmlPullParser.TEXT:     //텍스받으면 각각에 내용에 맞게 함수 실행시켜 넣어줌
-                                text = xpars.getText();
-                                break;
-
-                            case XmlPullParser.END_TAG:       //</servList>이런 식으 태그 만나면 끝이므로 실행
-                                if (tag.equals("servList")) {       //서브리스트라는 태그를 만나면 생성한 배열 원소 객체 하나 더해주기
-                                    policyInputArrayList.add(policyInput);
-                                } else if (tag.equals("inqNum")) {
-                                    text=text.replaceAll("[,]","");
-                                    policyInput.setInqNum(Integer.parseInt(text));
-                                } else if (tag.equals("jurMnofNm")) {
-                                    policyInput.setJurMnofNm(text);
-                                } else if (tag.equals("jurOrgNm")) {
-                                    policyInput.setJurOrgNm(text);
-                                } else if (tag.equals("servDgst")) {
-                                    policyInput.setServDgst(text);
-                                } else if (tag.equals("servDtlLink")) {
-                                    policyInput.setServDtlLink(text);
-                                } else if (tag.equals("servId")) {
-                                    policyInput.setServId(text);
-                                } else if (tag.equals("servNm")) {
-                                    policyInput.setServNm(text);
-                                    Log.e("ㅎㅎ", text);
-                                } else if (tag.equals("svcfrstRegTs")) {
-                                    policyInput.setSvcfrstRegTs(text);
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                        eventType = xpars.next();    //다음 이벤트 타입으로 넘겨줌
-                    }
-                    ins.close();
                     msg.what = 101;
-                } catch (XmlPullParserException | IOException e) {
-                    e.printStackTrace();
-                    msg.what = 102;
-                    msg.obj = "API 오류";
                 }
-                mHandler.sendMessage(msg);
+                else{
+                    msg.what=103;
+                }
+                    mHandler.sendMessage(msg);
             }
         });
     }
@@ -184,7 +143,7 @@ public class Fragment2 extends Fragment {
     private void makePolicyInfo(ArrayList<policyInput> policyInputArrayList){
         for(int i=0;i<policyInputArrayList.size();i++) {
             String ServDgst = policyInputArrayList.get(i).getServDgst().replaceAll("[<>br/]", "");
-            //Log.e("여기11",ServDgst);
+            Log.e("여기11",ServDgst);
             policyInfoArrayList.add(new policyInfo(policyInputArrayList.get(i).getServNm(), ServDgst, "0", "0", policyInputArrayList.get(i).getServId()));
         }
     }

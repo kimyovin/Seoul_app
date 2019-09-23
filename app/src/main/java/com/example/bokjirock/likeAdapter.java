@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Context context;
     private ArrayList<policyInfo> policyInfoArrayList;
@@ -28,35 +28,26 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView text_title;
         private TextView text_content;
-        private TextView text_like_count;
-        private TextView text_comment_count;
-        private ImageButton like_button;
-        private ImageButton scrap_button;
+        private ImageButton delete_button;
 
         MyViewHolder(View view) {
             super(view);
             view.setOnClickListener(this);
             text_title = view.findViewById(R.id.tv_policyname);
             text_content = view.findViewById(R.id.tv_policycontent);
-            text_like_count = view.findViewById(R.id.tv_likecount);
-            text_comment_count = view.findViewById(R.id.tv_comentcount);
-            like_button=view.findViewById(R.id.ib_likebutton);
-            scrap_button=view.findViewById(R.id.ib_scrapbutton);
-            scrap_button.setOnClickListener(new View.OnClickListener()
+            delete_button=view.findViewById(R.id.ib_deletebtn);
+            delete_button.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
                     int pos = getAdapterPosition() ;
                     if (pos != RecyclerView.NO_POSITION) {
-                        Log.e("확인",policyInfoArrayList.get(pos).getpTitle());
-                        if(!helper.isExist(policyInfoArrayList.get(pos).getId())) {
-                            helper.insert(policyInfoArrayList.get(pos).getId(), policyInfoArrayList.get(pos).getpTitle(), policyInfoArrayList.get(pos).getpContent());
-                            Toast.makeText(context, "관심정책에 추가하셨습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(context, "이미 추가하신 정책입니다.", Toast.LENGTH_SHORT).show();
-                        }
+                        positions=getAdapterPosition();
+                        helper.delete(policyInfoArrayList.get(pos).getId());
+                        Toast.makeText(context,"관심정책에서 삭제합니다.",Toast.LENGTH_LONG).show();
+                        policyInfoArrayList.remove(positions);
+                        notifyDataSetChanged();
                     }
                 }
             });
@@ -73,7 +64,7 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
     }
 
-    public myAdapter(Context context, ArrayList<policyInfo> policyInfoArrayList) {
+    public likeAdapter(Context context, ArrayList<policyInfo> policyInfoArrayList) {
         this.context = context;
         this.policyInfoArrayList = policyInfoArrayList;
         helper=new likeDBHelper(context, "Likes.db", null, 1);
@@ -81,7 +72,7 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frag_cardview, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frag_cardview_like, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -93,8 +84,6 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         myViewHolder.text_title.setText(policyInfoArrayList.get(position).getpTitle());
         myViewHolder.text_content.setText(policyInfoArrayList.get(position).getpContent());
-        myViewHolder.text_like_count.setText(policyInfoArrayList.get(position).getpLikeCount());
-        myViewHolder.text_comment_count.setText(policyInfoArrayList.get(position).getpCommentCount());
     }
 
     @Override
