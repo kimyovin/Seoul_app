@@ -5,14 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:padding="3dp"
+=======
+    android:padding="5dp"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
     android:layout_gravity="center"
     >
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
         android:layout_width="match_parent"
+=======
+        android:layout_width="345dp"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
         android:layout_height="match_parent"
         android:layout_margin="3dp"
         android:layout_marginBottom="8dp"
@@ -61,8 +69,13 @@
 
             <TextView
                 android:id="@+id/policyName"
+<<<<<<< HEAD
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+=======
+                android:layout_width="330dp"
+                android:layout_height="50dp"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
                 android:layout_marginTop="5dp"
                 android:background="#EEEEEE"
                 android:gravity="center"
@@ -78,6 +91,47 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
+<<<<<<< HEAD
+=======
+                <ImageButton
+                    android:id="@+id/ib_likebutton"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/like_button"
+                    android:scaleType="centerInside"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_likecount"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp" />
+
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="10dp" />
+
+
+                <ImageView
+                    android:id="@+id/iv_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_button"
+                    android:scaleType="centerInside"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_comentcount"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp" />
+
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
 
             </LinearLayout>
 
