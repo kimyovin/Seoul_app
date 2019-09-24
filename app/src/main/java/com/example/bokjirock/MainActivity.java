@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 //                    container.setBackgroundColor(Color.BLUE);
                     return true;
                 case R.id.navigation_search:
+                    transaction.replace(R.id.frameLayout, fragmentLocation).commitAllowingStateLoss();
 //                    mTextMessage.setText("Login");
                     return true;
             }
