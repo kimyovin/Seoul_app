@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level">
+        <item> 해당없음</item>
+        <item >1급</item>
+        <item >2급</item>
+        <item >3급</item>
+        <item >4급</item>
+        <item >5급</item>
+        <item >6급</item>
+
+    </string-array>
+</resources>

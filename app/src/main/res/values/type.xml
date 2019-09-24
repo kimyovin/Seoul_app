@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="type">
+        <item >해당없음</item>
+        <item >한부모</item>
+        <item >다문화</item>
+        <item >조손</item>
+        <item >새터민</item>
+        <item >소년소녀가장</item>
+        <item >독거노인</item>
+
+    </string-array>
+
+</resources>
