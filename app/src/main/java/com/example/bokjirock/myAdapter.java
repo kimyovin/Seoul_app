@@ -28,12 +28,6 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView text_title;
         private TextView text_content;
-<<<<<<< HEAD
-=======
-        private TextView text_like_count;
-        private TextView text_comment_count;
-        private ImageButton like_button;
->>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
         private ImageButton scrap_button;
 
         MyViewHolder(View view) {
@@ -41,12 +35,6 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             view.setOnClickListener(this);
             text_title = view.findViewById(R.id.tv_policyname);
             text_content = view.findViewById(R.id.tv_policycontent);
-<<<<<<< HEAD
-=======
-            text_like_count = view.findViewById(R.id.tv_likecount);
-            text_comment_count = view.findViewById(R.id.tv_comentcount);
-            like_button=view.findViewById(R.id.ib_likebutton);
->>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             scrap_button=view.findViewById(R.id.ib_scrapbutton);
             scrap_button.setOnClickListener(new View.OnClickListener()
             {
@@ -99,12 +87,7 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         myViewHolder.text_title.setText(policyInfoArrayList.get(position).getpTitle());
         myViewHolder.text_content.setText(policyInfoArrayList.get(position).getpContent());
-<<<<<<< HEAD
 
-=======
-        myViewHolder.text_like_count.setText(policyInfoArrayList.get(position).getpLikeCount());
-        myViewHolder.text_comment_count.setText(policyInfoArrayList.get(position).getpCommentCount());
->>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
     }
 
     @Override

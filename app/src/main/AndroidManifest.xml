@@ -17,12 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".searchActivity" android:label="조건 검색"/>
-        <activity android:name=".categoryActivity" android:label="카테고리 검색"/>
-        <activity android:name=".locationActivity" android:label="위치 검색"/>
+        <!--<activity android:name=".searchActivity" android:label="조건 검색"/>-->
+        <!--<activity android:name=".categoryActivity" android:label="카테고리 검색"/>-->
+        <!--<activity android:name=".locationActivity" android:label="위치 검색"/>-->
         <activity android:name=".resultActivity" android:label="검색 결과"/>
         <activity android:name=".detailInfo" android:label="상세 결과"/>
-    </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="41fb30bcda59fdf7f241683130ad5689"/>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
+    </uses-permission>
 </manifest>
