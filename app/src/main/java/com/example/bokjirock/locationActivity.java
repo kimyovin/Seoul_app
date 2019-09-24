@@ -325,10 +325,10 @@ public class locationActivity extends Fragment implements MapReverseGeoCoder.Rev
 
         mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds));
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeadingWithoutMapMoving);
-//        MapPOIItem[] poiItems = mapView.getPOIItems();
-//        if (poiItems.length > 0) {
-//            mapView.selectPOIItem(poiItems[0], false);    //특정 POI Item 을 선택한다. 선택된 POI Item은 Callout Balloon(말풍선)이 아이콘(마커)위에 나타난다.
-//        }
+        MapPOIItem[] poiItems = mapView.getPOIItems();
+        if (poiItems.length > 0) {
+            mapView.selectPOIItem(poiItems[0], false);    //특정 POI Item 을 선택한다. 선택된 POI Item은 Callout Balloon(말풍선)이 아이콘(마커)위에 나타난다.
+        }
     }
 
     class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
