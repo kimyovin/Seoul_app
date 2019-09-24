@@ -19,6 +19,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+
 public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     MenuItem item1, item2, item3, item4;
     //private TextView mTextMessage;
@@ -32,10 +34,10 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 
     @Override   //하단바 메뉴에 대한 intent 설정
     public boolean onMenuItemClick(MenuItem menuItem) {
-//        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
+        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
         if(menuItem.getItemId() == R.id.navigation_dashboard){  //2번째 하단바 메뉴
             Intent intent = new Intent(this, searchActivity.class);
             startActivity(intent);

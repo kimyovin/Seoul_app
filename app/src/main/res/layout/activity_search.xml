@@ -24,8 +24,15 @@
 
         <TextView
             android:id="@+id/text1"
+<<<<<<< HEAD
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EEEEEE"
+            android:textSize="30dp"
+=======
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"

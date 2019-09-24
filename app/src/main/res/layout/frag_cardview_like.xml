@@ -31,18 +31,12 @@
                 android:textSize="16dp" />
 
             <ImageButton
-<<<<<<< HEAD
-                android:layout_width="0dp"
-                android:layout_weight="0.8"
-                android:layout_height="15dp"
-=======
                 android:layout_width="0dip"
                 android:layout_weight="0.8"
                 android:layout_height="20dp"
->>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
                 android:scaleType="fitXY"
                 android:background="@drawable/scrap_button"
-                android:id="@+id/ib_scrapbutton"
+                android:id="@+id/ib_deletebtn"
                 />
 
         </LinearLayout>
@@ -66,69 +60,6 @@
                 android:id="@+id/tv_policycontent"
                 android:textSize="13dp"
                 />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dip"
-            android:layout_weight="2.5"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:layout_gravity="right"
-            android:padding="3dp"
-            >
-
-<<<<<<< HEAD
-
-=======
-            <ImageButton
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ib_likebutton"
-                android:background="@drawable/like_button"
-                android:scaleType="centerInside"
-
-                />
-
-
-
-            <TextView
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:id="@+id/tv_likecount"
-                />
-
-
-            <TextView
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="  "
-                />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/chat_button"
-                android:id="@+id/iv_comment"
-                android:scaleType="centerInside"
-
-                />
-
-
-            <TextView
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_comentcount"
-                android:textSize="20dp"
-                />
->>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
-
-
 
         </LinearLayout>
 

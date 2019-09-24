@@ -50,28 +50,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/top_guideline02"
+<<<<<<< HEAD
+            app:layout_constraintGuide_percent=".2375"
+=======
             app:layout_constraintGuide_percent=".225"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             android:orientation="horizontal"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/top_guideline03"
+<<<<<<< HEAD
+            app:layout_constraintGuide_percent=".475"
+=======
             app:layout_constraintGuide_percent=".45"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             android:orientation="horizontal"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/top_guideline04"
+<<<<<<< HEAD
+            app:layout_constraintGuide_percent=".7125"
+=======
             app:layout_constraintGuide_percent=".675"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             android:orientation="horizontal"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/top_guideline05"
+<<<<<<< HEAD
+            app:layout_constraintGuide_percent=".95"
+=======
             app:layout_constraintGuide_percent=".90"
+>>>>>>> 15629c9b215a10b371ea48762eb01a5ae3d48917
             android:orientation="horizontal"/>
 
         <androidx.constraintlayout.widget.Guideline
@@ -218,5 +234,3 @@
             android:background="@drawable/oldman" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

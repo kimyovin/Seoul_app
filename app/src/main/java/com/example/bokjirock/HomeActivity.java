@@ -16,14 +16,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 
 public class HomeActivity extends Fragment {
 
     private ViewPager tabViewPager; //tab이 들어갈 view pager
-    ActionBar actionBar;    //swipe할 수 있게 해주는 액션바
-    private FragmentManager fm;
-    private ArrayList<Fragment> fList;  //각 탭에 들어갈 fragment list
+    private CustomFragmentPagerAdapter pagerAdapter;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -34,28 +34,22 @@ public class HomeActivity extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Log.i("cycle", "onCreate");
-        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();  //액션바 객체 정의
-
-        actionBar.show();
-        //리스너있던 자리
-
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        actionBar.removeAllTabs();
-        actionBar.hide();
 //        actionBar.setDisplayShowTitleEnabled(false); //액션바 노출 유무
         Log.i("cycle", "onPause");
     }
+
     @Override
     public void onStop() {
         super.onStop();
         Log.i("cycle", "onStop");
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -80,40 +74,28 @@ public class HomeActivity extends Fragment {
         View view = inflater.inflate(R.layout.activity_home, container, false);
 //        setContentView(R.layout.activity_main);
         Log.i("cycle", "onCreateView");
-        fm = getFragmentManager();  //fragment Manager 객체 정의
 
         tabViewPager = view.findViewById(R.id.pager);    //스와이프할 뷰페이지를 정의
-        //액션바 속성 정의
-        actionBar.setDisplayShowTitleEnabled(true); //액션바 노출 유무
-        actionBar.setTitle("정책 소식지");  //액션바 타이틀 라벨
+        pagerAdapter = new CustomFragmentPagerAdapter(
+                getChildFragmentManager()
+        );
+        tabViewPager.setAdapter(pagerAdapter);
+        TabLayout mTab = (TabLayout) view.findViewById(R.id.tabMode);
+        mTab.setupWithViewPager(tabViewPager);
 
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);    //액션바에 모드 설정; navigation_mode_tabs로 tab모드 설정
-
-        //액션바에 추가될 탭 생성
-        ActionBar.Tab tab1 = actionBar.newTab().setText("인기순").setTabListener(tabListener);
-        ActionBar.Tab tab2 = actionBar.newTab().setText("최신순").setTabListener(tabListener);
-
-        //액션바에 탭 추가
-        actionBar.addTab(tab1);
-        actionBar.addTab(tab2);
-
-        //각 탭에 들어갈 fragment 생성 및 추가
-        fList = new ArrayList<Fragment>();
-        fList.add(Fragment1.newInstance());
-        fList.add(Fragment2.newInstance());
-
-
-
-        //swipe로 tab을 이동할 viewpager의 리스너 설정
-        tabViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        tabViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                actionBar.setSelectedNavigationItem(position);
+
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                switch (position) {
+                    case 1:
+                        refresh();
+                        break;
+                }
             }
 
             @Override
@@ -121,37 +103,16 @@ public class HomeActivity extends Fragment {
 
             }
         });
-
-        //뷰페이져의 adapter 생성, 연결
-
-        CustomFragmentPagerAdapter adapter = new CustomFragmentPagerAdapter(fm, fList);
-
-        tabViewPager.setAdapter(adapter);
-
         return view;
     }
 
-    ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-        @Override
-        public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-            //액션바에서 선택된 탭에 대응되는 페이지를 뷰페이지에서 현재 보여지는 페이지로 변경
-            tabViewPager.setCurrentItem(tab.getPosition());
-        }
-
-        @Override
-        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            //해당 탭을 선택시 처리
-            //해당 탭을 선택시 해당 뷰페이져로 이동
-//            actionBar.setSelectedNavigationItem(tab.getPosition());
-//            tabViewPager.setCurrentItem(tab.getPosition());
-        }
-
-        @Override
-        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            //해당 탭이 다시 선택됐을때 처리
-            //그냥 다시 냅두니 아무코드 X
-        }
-    };
-
+    private void refresh() {
+        Log.e("확인1", "탭1");
+        pagerAdapter.notifyDataSetChanged();
+        return;
+    }
 
 }
+
+
+

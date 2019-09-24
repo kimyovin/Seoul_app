@@ -10,7 +10,15 @@ public class policyInput {   //정책에 들어가는 내용들 그 요청하면
     private String servNm;
     private String svcfrstRegTs;
 
+    public policyInput(){
 
+    }
+
+    public policyInput(String id, String title, String content){
+        servId=id;
+        servNm=title;
+        servDgst=content;
+    }
     public int getInqNum() {
         return inqNum;
     }    //변수에 있는 내용 가져오기
@@ -78,5 +86,4 @@ public class policyInput {   //정책에 들어가는 내용들 그 요청하면
     public  String toString(){
         return ("복지이름: " + servNm + "복지 상세정보: " + servDgst + "복지 등록일:" + svcfrstRegTs + "복지 링크: " + servDtlLink);
     }
-
 }
