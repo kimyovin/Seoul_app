@@ -3,7 +3,6 @@ package com.example.bokjirock;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -16,16 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+
 public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     MenuItem item1, item2, item3, item4;
     //private TextView mTextMessage;
-
-    private ViewPager tabViewPager; //tab이 들어갈 view pager
     //Fragment 매니저 선언
     private FragmentManager fragmentManager = getSupportFragmentManager();
     //Page에 대한 Activity 선언
@@ -33,21 +31,20 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     private searchActivity fragmentSearch = new searchActivity();
     private categoryActivity fragmentCategory = new categoryActivity();
     private locationActivity fragmentLocation = new locationActivity();
-    private CustomFragmentPagerAdapter pagerAdapter;
 
     @Override   //하단바 메뉴에 대한 intent 설정
     public boolean onMenuItemClick(MenuItem menuItem) {
-//        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
-        if (menuItem.getItemId() == R.id.navigation_dashboard) {  //2번째 하단바 메뉴
+        if(menuItem.getItemId() == R.id.navigation_home){   //1번째 하단바 메뉴
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId() == R.id.navigation_dashboard){  //2번째 하단바 메뉴
             Intent intent = new Intent(this, searchActivity.class);
             startActivity(intent);
         }
-        if (menuItem.getItemId() == R.id.navigation_notifications) {  //3번째 하단바 메뉴
+        if(menuItem.getItemId() == R.id.navigation_notifications){  //3번째 하단바 메뉴
             //Intent intent = new Intent(this, CategoryActivity.class);
-            Intent intent = new Intent(this, categoryActivity.class);
+            Intent intent=new Intent(this, categoryActivity.class);
             startActivity(intent);
         }
         if (menuItem.getItemId() == R.id.navigation_search) {   //4번째 하단바 메뉴
@@ -79,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 //                    container.setBackgroundColor(Color.BLUE);
                     return true;
                 case R.id.navigation_search:
+                    transaction.replace(R.id.frameLayout, fragmentLocation).commitAllowingStateLoss();
 //                    mTextMessage.setText("Login");
                     return true;
             }
@@ -90,14 +88,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tabViewPager = (ViewPager) findViewById(R.id.pager);
 
-        pagerAdapter = new CustomFragmentPagerAdapter(
-                getSupportFragmentManager()
-        );
-        tabViewPager.setAdapter(pagerAdapter);
-        TabLayout mTab = (TabLayout) findViewById(R.id.tabMode);
-        mTab.setupWithViewPager(tabViewPager);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameLayout, fragmentHome).commitAllowingStateLoss();
 
@@ -105,35 +96,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);  //하단바 리스너 설정
         BottomNavigationViewHelper.disableShiftMode(navigation);    //하단바 viewHelper 설정
-      
-        tabViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-            @Override
-            public void onPageSelected(int position) {
-                switch (position){
-                    case 1:
-                        refresh();
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }
-
-    private void refresh(){
-        Log.e("확인1","탭1");
-        pagerAdapter.notifyDataSetChanged();
-        return;
-    }
-
-        
     }
     //onCreate 끝
 
+}
