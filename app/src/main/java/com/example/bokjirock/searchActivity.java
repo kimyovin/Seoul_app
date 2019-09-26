@@ -1,10 +1,14 @@
 package com.example.bokjirock;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
@@ -13,183 +17,91 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
+import static android.R.layout.simple_spinner_dropdown_item;
+
 public class searchActivity extends Fragment {
     private Button btnFinish;
     private Spinner spinner1, spinner2, spinner3, spinner4, spinnerAge;
     private String key = "rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D";
     private String str = null;
+    private String sAge="";
+    private String sTarget="";
+    private String sTypeObs="";
+    private String sLevelObs="";
+    private String sTypeHome="";
+    ArrayAdapter<String> arrayAdapter;
 
     CheckBox typeALL, type00, type01, type02, type03, type04, type05,type06,type07, type08, type09, type0A;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final String sAge, sTarget, sTypeObs, sLevelObs, sTypeHome;
-
+        Resources resources=getResources();
         View view = inflater.inflate(R.layout.activity_search, container, false);
 
         btnFinish = view.findViewById(R.id.btnFinish);  // 검색버튼
         spinnerAge = view.findViewById(R.id.spinnerAge);  // 나이
-
         spinner1 = view.findViewById(R.id.spinner1);      // 대상특성 여성, 임산부, 장애, ..
         spinner2 = view.findViewById(R.id.spinner2);      // 장애 클릭시 지체...시각, 청각..등등
         spinner3 = view.findViewById(R.id.spinner3);      // 장애 클릭시 몇급인지
         spinner4 = view.findViewById(R.id.spinner4);      // 가구 유형 한부모, 다문화, 조손 등등
 
-        switch (spinnerAge.getSelectedItem().toString()) {
-            case "영유아":
-                sAge = "001";
-                break;
-            case "아동":
-                sAge = "002";
-                break;
-            case "청소년":
-                sAge = "003";
-                break;
-            case "청년":
-                sAge = "004";
-                break;
-            case "중장년":
-                sAge = "005";
-                break;
-            case "노년":
-                sAge = "006";
-                break;
-            default:
-                sAge = "ALL";
-                break;
-        }
+        spinnerAge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                sAge= "00"+(position+1);
+                Log.e("확인44",sAge+"호잇");
+                Log.e("확인33","여깁니다");
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
 
-        switch (spinner1.getSelectedItem().toString()) {
-            case "해당없음":
-                sTarget = "001";
-                break;
-            case "여성":
-                sTarget = "002";
-                break;
-            case "임산부":
-                sTarget = "003";
-                break;
-            case "장애":
-                sTarget = "004";
-                break;
-            case "국가유공자등 보훈대상자":
-                sTarget = "005";
-                break;
-            case "실업자":
-                sTarget = "006";
-                break;
-            default:
-                sTarget = "ALL";
-                break;
-        }
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                sTarget= "00"+(position+1);
+                Log.e("확인33","여깁니다");
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                sTypeObs= (position+1)+"0";
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
 
-        switch (spinner2.getSelectedItem().toString()) {
-            case "지체":
-                sTypeObs = "10";
-                break;
-            case "시각":
-                sTypeObs = "20";
-                break;
-            case "청각":
-                sTypeObs = "30";
-                break;
-            case "언어":
-                sTypeObs = "40";
-                break;
-            case "지적":
-                sTypeObs = "50";
-                break;
-            case "뇌병변":
-                sTypeObs = "60";
-                break;
-            case "자폐성":
-                sTypeObs = "70";
-                break;
-            case "정신":
-                sTypeObs = "80";
-                break;
-            case "신장":
-                sTypeObs = "90";
-                break;
-            case "심장":
-                sTypeObs = "A0";
-                break;
-            case "호흡기":
-                sTypeObs = "B0";
-                break;
-            case "간":
-                sTypeObs = "C0";
-                break;
-            case "안면":
-                sTypeObs = "D0";
-                break;
-            case "장루":
-                sTypeObs = "E0";
-                break;
-            case "간질":
-                sTypeObs = "F0";
-                break;
-            default:
-                sTypeObs = "NULL";
-                break;
-        }
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                sLevelObs= String.valueOf((position+1));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
-
-        switch (spinner3.getSelectedItem().toString()) {
-            case "1급":
-                sLevelObs = "1";
-                break;
-            case "2급":
-                sLevelObs = "2";
-                break;
-            case "3급":
-                sLevelObs = "3";
-                break;
-            case "4급":
-                sLevelObs = "4";
-                break;
-            case "5급":
-                sLevelObs = "5";
-                break;
-            case "6급":
-                sLevelObs = "6";
-                break;
-            default:
-                sLevelObs = "NULL";
-                break;
-        }
-
-
-        switch (spinner4.getSelectedItem().toString()) {
-            case "해당없음":
-                sTypeHome = "001";
-                break;
-            case "한부모":
-                sTypeHome = "002";
-                break;
-            case "다문화":
-                sTypeHome = "003";
-                break;
-            case "조손":
-                sTypeHome = "004";
-                break;
-            case "새터민":
-                sTypeHome = "005";
-                break;
-            case "소년소녀가장":
-                sTypeHome = "006";
-                break;
-            case "독거노인":
-                sTypeHome = "007";
-                break;
-            default:
-                sTypeHome = "ALL";
-                break;
-
-        }
+        spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                sTypeHome= "00"+(position+1);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
         typeALL = view.findViewById(R.id.typeALL);
         type00 = view.findViewById(R.id.type00);
@@ -274,10 +186,10 @@ public class searchActivity extends Fragment {
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
                 intent.putExtra("query", query);
+                Log.e("query",query);
                 startActivity(intent);
 
                 getActivity().finish();
-
 
             }
         });
