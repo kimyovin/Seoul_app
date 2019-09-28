@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     private FragmentManager fragmentManager = getSupportFragmentManager();
     //Page에 대한 Activity 선언
     private HomeActivity fragmentHome = new HomeActivity();
+    private searchHomeActivity fragmentSearchHome=new searchHomeActivity();
     private searchActivity fragmentSearch = new searchActivity();
     private categoryActivity fragmentCategory = new categoryActivity();
     private locationActivity fragmentLocation = new locationActivity();
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 //                    setContentView(R.layout.activity_main);
                     return true;
                 case R.id.navigation_dashboard:
-                    transaction.replace(R.id.frameLayout, fragmentSearch).commitAllowingStateLoss();
+                    transaction.replace(R.id.frameLayout, fragmentSearchHome).commitAllowingStateLoss();
 //                    container.setBackgroundColor(Color.YELLOW);
                     return true;
                 case R.id.navigation_notifications:

@@ -2,6 +2,7 @@ package com.example.bokjirock;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -24,6 +27,7 @@ public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private int positions;
     private likeDBHelper helper;
     private policyInfo item;
+    public boolean signal=false;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView text_title;
@@ -48,6 +52,7 @@ public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                         Toast.makeText(context,"관심정책에서 삭제합니다.",Toast.LENGTH_LONG).show();
                         policyInfoArrayList.remove(positions);
                         notifyDataSetChanged();
+                        setsignal(true);
                     }
                 }
             });
@@ -70,6 +75,13 @@ public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         helper=new likeDBHelper(context, "Likes.db", null, 1);
     }
 
+    public void setsignal(boolean signal) {
+        SharedPreferences pref = context.getSharedPreferences("pref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("sig", signal);
+        editor.commit();
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frag_cardview_like, parent, false);
@@ -86,6 +98,7 @@ public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         myViewHolder.text_content.setText(policyInfoArrayList.get(position).getpContent());
     }
 
+
     @Override
     public int getItemCount() {
         return policyInfoArrayList.size();
@@ -98,4 +111,5 @@ public class likeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         String address= policyInfos1.get(position).getId();
         return address;
     }
+
 }

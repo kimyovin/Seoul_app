@@ -3,6 +3,7 @@ package com.example.bokjirock;
 import androidx.fragment.app.Fragment;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class Fragment2 extends Fragment {
     private likeDBHelper helper;
@@ -44,6 +47,9 @@ public class Fragment2 extends Fragment {
     private ArrayList<policyInput> policyInputArrayList;
     private ArrayList<policyInfo> policyInfoArrayList;
     private likeAdapter madapter;
+    private static boolean signal=false;
+
+
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message message) {
@@ -64,7 +70,7 @@ public class Fragment2 extends Fragment {
         }
     });
 
-    public static Fragment2 newInstance() {
+    public static Fragment2 newInstance(String sig) {
         Bundle args=new Bundle();
         Fragment2 fragment = new Fragment2();
         fragment.setArguments(args);
@@ -90,6 +96,7 @@ public class Fragment2 extends Fragment {
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(LayoutManager1);
         getsubwayApi();
+
         return view;
     }
 
@@ -97,7 +104,6 @@ public class Fragment2 extends Fragment {
     public void onStart() {
         super.onStart();
     }
-
 
     @Override
     public void onStop() {
@@ -116,7 +122,6 @@ public class Fragment2 extends Fragment {
         apiThread = initgetAPiThread();
         apiThread.start();
     }
-
 
     private Thread initgetAPiThread() {
         return new Thread(new Runnable() {

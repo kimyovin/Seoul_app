@@ -30,6 +30,7 @@
                 android:layout_weight="7.7"
                 android:textSize="16dp" />
 
+
             <ImageButton
                 android:layout_width="0dp"
                 android:layout_weight="0.8"
@@ -73,9 +74,6 @@
             android:layout_gravity="right"
             android:padding="3dp"
             >
-
-
-
 
 
         </LinearLayout>
