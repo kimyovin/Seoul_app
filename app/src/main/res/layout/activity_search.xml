@@ -10,34 +10,88 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="2dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:padding="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        >
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver01"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#EEEEEE"
-            android:textSize="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="맞춤 복지 검색"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".02"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".98"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".50"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".01"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".11"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".21"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".31"
+            />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".41"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".75"
+            />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ho07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".85"
+            />
+
+
 
         <TextView
             android:id="@+id/textView4"
@@ -47,118 +101,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
+            android:background="@drawable/search_button_green"
             android:gravity="center"
             android:text="나이"
             android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.075" />
-
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="250dp"
-            android:layout_height="28dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:entries="@array/array1"
-            app:layout_constraintBottom_toTopOf="@+id/spinner3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.929"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="150dp"
-            android:layout_height="28dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:clickable="false"
-            android:entries="@array/number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner3"
-            app:layout_constraintHorizontal_bias="0.644"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.259" />
-
-        <Spinner
-            android:id="@+id/spinner3"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:clickable="false"
-            android:entries="@array/level"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.925"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.261" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
-            android:gravity="center"
-            android:text="가구 유형"
-            android:textSize="20dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner4"
-            app:layout_constraintHorizontal_bias="0.525"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.362" />
-
-        <Spinner
-            android:id="@+id/spinner4"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/type"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.915"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.36" />
-
-
-        <Button
-            android:id="@+id/btnFinish"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
-            android:text="검색"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.848" />
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver03"
+            app:layout_constraintTop_toBottomOf="@+id/ho01"
+            app:layout_constraintBottom_toTopOf="@+id/ho02"
+            />
 
         <Spinner
             android:id="@+id/spinnerAge"
@@ -170,12 +121,112 @@
             android:layout_marginTop="8dp"
             android:entries="@array/age"
             android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/spinner1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.902" />
+            app:layout_constraintLeft_toRightOf="@+id/ver03"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho01"
+            app:layout_constraintBottom_toTopOf="@+id/ho02"
+            />
+
+
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="250dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:entries="@array/array1"
+            android:gravity="right"
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho02"
+            app:layout_constraintBottom_toTopOf="@+id/ho03"
+            />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="150dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:entries="@array/number"
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver03"
+            app:layout_constraintTop_toBottomOf="@+id/ho03"
+            app:layout_constraintBottom_toTopOf="@+id/ho04"
+            />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:entries="@array/level"
+            app:layout_constraintLeft_toRightOf="@+id/ver03"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho03"
+            app:layout_constraintBottom_toTopOf="@+id/ho04"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/search_button_green"
+            android:gravity="center"
+            android:text="가구 유형"
+            android:textSize="20dp"
+
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver03"
+            app:layout_constraintTop_toBottomOf="@+id/ho04"
+            app:layout_constraintBottom_toTopOf="@+id/ho05"
+            />
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:entries="@array/type"
+            app:layout_constraintLeft_toRightOf="@+id/ver03"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho04"
+            app:layout_constraintBottom_toTopOf="@+id/ho05"
+            />
+
+
+        <Button
+            android:id="@+id/btnFinish"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/search_button_green"
+            android:text="검색"
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho06"
+            app:layout_constraintBottom_toTopOf="@+id/ho07"
+            />
+
 
 
         <LinearLayout
@@ -188,12 +239,11 @@
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             android:padding="3dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnFinish"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.963">
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho05"
+            app:layout_constraintBottom_toTopOf="@+id/ho06"
+            >
 
             <LinearLayout
                 android:layout_width="wrap_content"
