@@ -73,6 +73,21 @@ public class likeDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public String getidResult() {
+        // 읽기가 가능하게 DB 열기
+        SQLiteDatabase db = getReadableDatabase();
+        String result = "";
+
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        Cursor cursor = db.rawQuery("SELECT num FROM Likes", null);
+
+        while (cursor.moveToNext()) {
+            result += cursor.getString(0)
+                    +";";
+        }
+        return result;
+    }
+
     public String getallResult() {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();

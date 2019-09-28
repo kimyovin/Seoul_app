@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -31,6 +33,7 @@ public class detailInfo extends Activity {
     private String Nm="";
     private String Dgst="";
     private String ANm="";
+    private String ALink="";
     private String Scrit="";
     private String Tgtr="";
     private String Juror="";
@@ -175,7 +178,7 @@ public class detailInfo extends Activity {
     public void modifyPD(){
         Nm=pd.getServNm().replaceAll("[<>br/]","");
         Dgst=pd.getServDgst().replaceAll("[<>br/]","");
-        //String ALink=pd.getAppleservSeDetailLink().replaceAll("[<>br/]","");
+        //ALink=pd.getAppleservSeDetailLink().replaceAll("[<>br/]","");
         ANm=pd.getAppleservSeDetailNm().replaceAll("[<>br/]","");
         Scrit=pd.getSlctCritCn().replaceAll("[<>br/]","");
         Tgtr=pd.getTgtrDtlCn().replaceAll("[<>br/]","");
@@ -189,7 +192,7 @@ public class detailInfo extends Activity {
         p_detail.setText("(1) 정책 세부 요약 사항:\n"+ Dgst+"\n");
         p_howto.setText("(2) 서비스 이용 및 신청방법:\n"+ANm+"\n");
         p_policyis.setText("(3) 신청 링크:");
-//        p_link.setText(pd.getAppleservSeDetailLink());
+        p_link.setText(Html.fromHtml(pd.getAppleservSeDetailLink()));
         p_condition.setText("\n(4) 선정기준:\n"+Scrit+"\n");
         p_condition_detail.setText("(5) 대상자 상세내용:\n"+Tgtr+"\n");
         p_location.setText("(6) 소관부처:\n"+Juror+" "+ JurMno+"\n");
@@ -204,17 +207,10 @@ public class detailInfo extends Activity {
         p_condition_detail=findViewById(R.id.policyCondition_detail);
         p_location=findViewById(R.id.policyLocation);
         p_policyis=findViewById(R.id.policyis);
-        ImageButton scrap_button=findViewById(R.id.scrap_button);
+        p_link.setClickable(true);
+        p_link.setMovementMethod(LinkMovementMethod.getInstance());;
         ImageButton share_button=findViewById(R.id.share_button);
 
-        scrap_button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                v.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.scrap_star));
-            }
-        });
 
         share_button.setOnClickListener(new View.OnClickListener()
         {

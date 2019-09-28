@@ -1,15 +1,8 @@
 package com.example.bokjirock;
 
 
-import android.content.*;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     //Page에 대한 Activity 선언
     private HomeActivity fragmentHome = new HomeActivity();
+    private searchHomeActivity fragmentSearchHome=new searchHomeActivity();
     private searchActivity fragmentSearch = new searchActivity();
     private categoryActivity fragmentCategory = new categoryActivity();
     private locationActivity fragmentLocation = new locationActivity();
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //                    setContentView(R.layout.activity_main);
                     return true;
                 case R.id.navigation_dashboard:
-                    transaction.replace(R.id.frameLayout, fragmentSearch).commitAllowingStateLoss();
+                    transaction.replace(R.id.frameLayout, fragmentSearchHome).commitAllowingStateLoss();
 //                    container.setBackgroundColor(Color.YELLOW);
                     return true;
                 case R.id.navigation_notifications:

@@ -35,7 +35,7 @@ import java.util.Comparator;
 
 public class Fragment1 extends Fragment {
 
-    private String queryUrl = "http://www.bokjiro.go.kr/openapi/rest/gvmtWelSvc?crtiKey=rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D&callTp=L&pageNum=1&numOfRows=500";
+    private String queryUrl = "http://www.bokjiro.go.kr/openapi/rest/gvmtWelSvc?crtiKey=rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D&callTp=L&pageNum=1&numOfRows=50";
     private Thread apiThread;
     AssetManager assetManager;
     private policyInput policyInput;
@@ -86,6 +86,12 @@ public class Fragment1 extends Fragment {
         recyclerView1.setLayoutManager(LayoutManager1);
         getsubwayApi();
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
     }
 
     @Override

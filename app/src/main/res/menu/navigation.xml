@@ -9,7 +9,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
     android:id="@+id/navigation_dashboard"
     android:icon="@android:drawable/ic_menu_search"
-    android:title="맞춤복지" />
+    android:title="복지검색" />
 
 <item
     android:id="@+id/navigation_notifications"
