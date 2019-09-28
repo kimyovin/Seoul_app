@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".01"
+            app:layout_constraintGuide_percent=".00"
             />
 
         <androidx.constraintlayout.widget.Guideline
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".11"
+            app:layout_constraintGuide_percent=".10"
             />
 
         <androidx.constraintlayout.widget.Guideline
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".21"
+            app:layout_constraintGuide_percent=".20"
             />
 
         <androidx.constraintlayout.widget.Guideline
@@ -66,14 +66,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".31"
+            app:layout_constraintGuide_percent=".30"
             />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/ho05"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".41"
+            app:layout_constraintGuide_percent=".40"
             />
 
         <androidx.constraintlayout.widget.Guideline
@@ -81,14 +81,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".75"
+            app:layout_constraintGuide_percent=".70"
             />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/ho07"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".85"
+            app:layout_constraintGuide_percent=".80"
             />
 
 
@@ -104,7 +104,7 @@
             android:background="@drawable/search_button_green"
             android:gravity="center"
             android:text="나이"
-            android:textSize="20dp"
+            android:textSize="18dp"
             app:layout_constraintLeft_toRightOf="@+id/ver01"
             app:layout_constraintRight_toLeftOf="@id/ver03"
             app:layout_constraintTop_toBottomOf="@+id/ho01"
@@ -187,7 +187,7 @@
             android:background="@drawable/search_button_green"
             android:gravity="center"
             android:text="가구 유형"
-            android:textSize="20dp"
+            android:textSize="18dp"
 
             app:layout_constraintLeft_toRightOf="@+id/ver01"
             app:layout_constraintRight_toLeftOf="@id/ver03"
@@ -209,24 +209,6 @@
             app:layout_constraintTop_toBottomOf="@+id/ho04"
             app:layout_constraintBottom_toTopOf="@+id/ho05"
             />
-
-
-        <Button
-            android:id="@+id/btnFinish"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/search_button_green"
-            android:text="검색"
-            app:layout_constraintLeft_toRightOf="@+id/ver01"
-            app:layout_constraintRight_toLeftOf="@id/ver02"
-            app:layout_constraintTop_toBottomOf="@+id/ho06"
-            app:layout_constraintBottom_toTopOf="@+id/ho07"
-            />
-
 
 
         <LinearLayout
@@ -361,6 +343,23 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnFinish"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/search_button_green"
+            android:textSize="18dp"
+            android:text="해당 조건으로 검색"
+            app:layout_constraintLeft_toRightOf="@+id/ver01"
+            app:layout_constraintRight_toLeftOf="@id/ver02"
+            app:layout_constraintTop_toBottomOf="@+id/ho06"
+            app:layout_constraintBottom_toTopOf="@+id/ho07"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
