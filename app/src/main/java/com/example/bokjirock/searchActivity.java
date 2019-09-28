@@ -1,7 +1,9 @@
 package com.example.bokjirock;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment;
 public class searchActivity extends Fragment {
     private Button btnFinish;
     private Spinner spinner1, spinner2, spinner3, spinner4, spinnerAge;
+    private String sAge, sTarget, sTypeObs, sLevelObs, sTypeHome;
     private String key = "rdw30zhS7kTarAscsrFuTMFxGC4RKeLM69MkiAIKH9nQaTXRYtU%2FQqG3ZHQqLS4iaPvMUBPte4%2FMSApoW6j6eQ%3D%3D";
     private String str = null;
 
@@ -24,7 +27,6 @@ public class searchActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final String sAge, sTarget, sTypeObs, sLevelObs, sTypeHome;
 
         View view = inflater.inflate(R.layout.activity_search, container, false);
 
@@ -59,6 +61,7 @@ public class searchActivity extends Fragment {
                 sAge = "ALL";
                 break;
         }
+        Log.e("확인1",sAge);
 
 
         switch (spinner1.getSelectedItem().toString()) {
@@ -84,6 +87,7 @@ public class searchActivity extends Fragment {
                 sTarget = "ALL";
                 break;
         }
+        Log.e("확인2",sTarget);
 
 
         switch (spinner2.getSelectedItem().toString()) {
@@ -136,6 +140,7 @@ public class searchActivity extends Fragment {
                 sTypeObs = "NULL";
                 break;
         }
+        Log.e("확인3",sTypeObs);
 
 
         switch (spinner3.getSelectedItem().toString()) {
@@ -273,6 +278,7 @@ public class searchActivity extends Fragment {
                 String query = str + option1 + option2 + option3 + option4 + option5+ typeUrl;
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), resultActivity.class);
+                Log.e("요청",query);
                 intent.putExtra("query", query);
                 startActivity(intent);
 

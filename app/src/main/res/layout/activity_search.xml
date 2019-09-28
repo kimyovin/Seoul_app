@@ -26,13 +26,17 @@
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:background="#EEEEEE"
             android:textSize="30dp"
+
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="맞춤 복지 검색"
+            android:textAlignment="center"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +51,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
+            android:background="@drawable/search_button_green"
+
             android:gravity="center"
             android:text="나이"
             android:textSize="20dp"
@@ -57,6 +62,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        />
+
 
 
         <Spinner
@@ -69,8 +80,11 @@
             android:entries="@array/array1"
             app:layout_constraintBottom_toTopOf="@+id/spinner3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.929"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="@id/textView4"
+            app:layout_constraintVertical_bias="0.05"
+            />
+
 
         <Spinner
             android:id="@+id/spinner2"
@@ -114,7 +128,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
+            android:background="@drawable/search_button_green"
+
             android:gravity="center"
             android:text="가구 유형"
             android:textSize="20dp"
@@ -145,14 +160,17 @@
 
         <Button
             android:id="@+id/btnFinish"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/green_button_small"
-            android:text="검색"
+            android:background="@drawable/search_button_green"
+            android:text="설정한 조건으로 검색"
+            android:textSize="25dp"
+            android:textAlignment="center"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
