@@ -1,22 +1,19 @@
 package com.example.bokjirock;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import java.util.ArrayList;
+public class SearchFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
-/**
- * FragmentPagerAdapter 를 상속받는 어댑터를 정의한다.
- */
-public class CustomFragmentPagerAdapter extends FragmentStatePagerAdapter {
+    private String[] VIEW_MAPNTOP_TITLES = {"맞춤검색","키워드검색"};
 
-    private String[] VIEW_MAPNTOP_TITLES = {"최신순","관심정책"};
+    // 아답터
 
-    // 아답터 생성자
-    public CustomFragmentPagerAdapter(FragmentManager fm) {
+    public SearchFragmentPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -31,11 +28,11 @@ public class CustomFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return Fragment1.newInstance();
+                return searchActivity.newInstance();
             case 1:
-                return Fragment2.newInstance("sig");
-                default:
-                    return null;
+                return keywordActivity.newInstance();
+            default:
+                return null;
         }
     }
 

@@ -41,21 +41,16 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
+                <androidx.legacy.widget.Space
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"/>
+
                 <ImageButton
                     android:id="@+id/share_button"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="@drawable/share_button" />
 
-                <androidx.legacy.widget.Space
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"/>
-
-                <ImageButton
-                    android:id="@+id/scrap_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/scrap_button" />
             </LinearLayout>
 
 
@@ -111,9 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:text="링크"
                 android:linksClickable="true"
                 android:autoLink="web"
-                android:text="링크"
                 android:textSize="20dp"
                 />
 

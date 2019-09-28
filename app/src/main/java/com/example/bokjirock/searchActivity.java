@@ -36,6 +36,12 @@ public class searchActivity extends Fragment {
     CheckBox typeALL, type00, type01, type02, type03, type04, type05,type06,type07, type08, type09, type0A;
 
     @Nullable
+    public static searchActivity newInstance() {
+        Bundle args=new Bundle();
+        searchActivity fragment = new searchActivity();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Resources resources=getResources();
@@ -52,12 +58,15 @@ public class searchActivity extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                sAge= "00"+(position+1);
-                Log.e("확인44",sAge+"호잇");
-                Log.e("확인33","여깁니다");
+                sAge= "00"+(position);
+                if(position==0){
+                    sAge="ALL";
+                }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent){
+             sAge="ALL";
+         }
         });
 
 
@@ -66,20 +75,29 @@ public class searchActivity extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 sTarget= "00"+(position+1);
-                Log.e("확인33","여깁니다");
+                if(sTarget.equals("001")){
+                    sTarget="ALL";
+                }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+                sTarget="ALL";
+            }
         });
 
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                sTypeObs= (position+1)+"0";
+                sTypeObs= (position)+"0";
+                if(sTypeObs.equals("00")){
+                    sTypeObs="NULL";
+                }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+                sTypeObs="NULL";
+            }
         });
 
 
@@ -88,9 +106,14 @@ public class searchActivity extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 sLevelObs= String.valueOf((position+1));
+                if(position==0){
+                    sLevelObs="NULL";
+                }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+                sLevelObs="NULL";
+            }
         });
 
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -98,9 +121,14 @@ public class searchActivity extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 sTypeHome= "00"+(position+1);
+                if(sTypeHome.equals("001")){
+                    sTypeHome="ALL";
+                }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+                sTypeHome="ALL";
+            }
         });
 
         typeALL = view.findViewById(R.id.typeALL);
@@ -133,7 +161,7 @@ public class searchActivity extends Fragment {
                 } else {
                     option2 = "&charTrgterArray=" + sTarget;
                 }
-                if (sTypeObs.equals("NULL")) {
+                 if(sTypeObs.equals("NULL")) {
                     option3 = "";
                 } else {
                     option3 = "&obstKiArray=" + sTypeObs;
